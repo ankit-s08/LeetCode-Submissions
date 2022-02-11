@@ -1,0 +1,62 @@
+/*---------------------------------------------------------> ANKIT SAHU <---------------------------------------------------------*/
+
+//Q link : https://leetcode.com/problems/valid-palindrome/
+
+class Solution {
+public:
+    
+void toLowercase(string &s,int n)
+{
+    for(int i=0; i<n; i++)
+    {
+        if(s[i] >='A' && s[i] <='Z')
+        {
+            s[i] = s[i] -'A' + 'a';
+        }
+    }
+}
+
+void avoid(string &s,string &temp,int n)
+{
+   	int j=0;
+    for(int i=0; i<n; i++)
+    {
+        if(s[i] >='a' && s[i] <='z' || s[i] >='0' && s[i] <='9')
+        {
+            temp += s[i];
+            j++;
+        }
+    }
+}
+
+void display(string &s ,int n)
+{
+    for(int i=0; i<n; i++)
+        cout<<s[i];
+}
+
+bool isPalindrome (string s)
+{
+    // Write your code here.
+    int n = s.size();
+    
+    //change to lowercase
+    toLowercase(s,n);
+    
+    //remove symbols and whitespaces
+    string temp = "";
+    
+    avoid(s , temp , n);
+    cout<<s<<endl;
+    int m = temp.size();
+    for(int i=0; i<m/2; i++)
+    {
+        if(temp[i] != temp[m-1-i])
+            return false;
+    }
+    return true;  
+    
+}
+};
+
+/*---------------------------------------------------------> ANKIT SAHU <---------------------------------------------------------*/
